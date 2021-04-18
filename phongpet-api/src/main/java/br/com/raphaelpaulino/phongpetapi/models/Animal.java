@@ -1,29 +1,35 @@
 package br.com.raphaelpaulino.phongpetapi.models;
 
+import javax.persistence.*;
 import java.util.Date;
+import java.util.Objects;
 
+@Entity
 public class Animal {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     protected Long id;
     protected String uuid;
-    protected String photo;
     protected String name;
-    protected String born_date;
-    protected String name_slug;
+    protected String photo;
+    @Column(name = "born_date")
+    protected String bornDate;
+    protected String nameSlug;
     protected String specie;
     protected String color;
     protected String gender;
     protected String size;
     protected String coat;
-    protected String breed;
+    protected String breed; // dog/cat/horse/sheep/cattle
     protected Integer age;
-    protected Integer age_months;
-    protected String age_group; //adult or puppy
-    protected boolean is_neutered;
-    protected boolean is_active;
-    protected Date deleted_at;
-    protected Date created_at;
-    protected Date updated_at;
+    protected Integer ageMonths;
+    protected String ageGroup; //adult or puppy
+    // protected boolean isNeutered;
+    // protected boolean isActive;
+    protected Date deletedAt;
+    protected Date createdAt;
+    protected Date updatedAt;
 
     public Long getId() {
         return id;
@@ -57,20 +63,20 @@ public class Animal {
         this.name = name;
     }
 
-    public String getBorn_date() {
-        return born_date;
+    public String getBornDate() {
+        return bornDate;
     }
 
-    public void setBorn_date(String born_date) {
-        this.born_date = born_date;
+    public void setBornDate(String bornDate) {
+        this.bornDate = bornDate;
     }
 
-    public String getName_slug() {
-        return name_slug;
+    public String getNameSlug() {
+        return nameSlug;
     }
 
-    public void setName_slug(String name_slug) {
-        this.name_slug = name_slug;
+    public void setNameSlug(String nameSlug) {
+        this.nameSlug = nameSlug;
     }
 
     public String getSpecie() {
@@ -129,59 +135,74 @@ public class Animal {
         this.age = age;
     }
 
-    public Integer getAge_months() {
-        return age_months;
+    public Integer getAgeMonths() {
+        return ageMonths;
     }
 
-    public void setAge_months(Integer age_months) {
-        this.age_months = age_months;
+    public void setAgeMonths(Integer ageMonths) {
+        this.ageMonths = ageMonths;
     }
 
-    public String getAge_group() {
-        return age_group;
+    public String getAgeGroup() {
+        return ageGroup;
     }
 
-    public void setAge_group(String age_group) {
-        this.age_group = age_group;
+    public void setAgeGroup(String ageGroup) {
+        this.ageGroup = ageGroup;
     }
 
-    public boolean isIs_neutered() {
-        return is_neutered;
+    // public boolean isNeutered() {
+    //     return isNeutered;
+    // }
+    //
+    // public void setNeutered(boolean neutered) {
+    //     isNeutered = neutered;
+    // }
+    //
+    // public boolean isActive() {
+    //     return isActive;
+    // }
+    //
+    // public void setActive(boolean active) {
+    //     isActive = active;
+    // }
+
+    public Date getDeletedAt() {
+        return deletedAt;
     }
 
-    public void setIs_neutered(boolean is_neutered) {
-        this.is_neutered = is_neutered;
+    public void setDeletedAt(Date deletedAt) {
+        this.deletedAt = deletedAt;
     }
 
-    public boolean isIs_active() {
-        return is_active;
+    public Date getCreatedAt() {
+        return createdAt;
     }
 
-    public void setIs_active(boolean is_active) {
-        this.is_active = is_active;
+    public void setCreatedAt(Date createdAt) {
+        this.createdAt = createdAt;
     }
 
-    public Date getDeleted_at() {
-        return deleted_at;
+    public Date getUpdatedAt() {
+        return updatedAt;
     }
 
-    public void setDeleted_at(Date deleted_at) {
-        this.deleted_at = deleted_at;
+    public void setUpdatedAt(Date updatedAt) {
+        this.updatedAt = updatedAt;
     }
 
-    public Date getCreated_at() {
-        return created_at;
+    @Override
+    public boolean equals(Object o) {
+        if (this == o)
+            return true;
+        if (o == null || getClass() != o.getClass())
+            return false;
+        Animal animal = (Animal) o;
+        return Objects.equals(id, animal.id);
     }
 
-    public void setCreated_at(Date created_at) {
-        this.created_at = created_at;
-    }
-
-    public Date getUpdated_at() {
-        return updated_at;
-    }
-
-    public void setUpdated_at(Date updated_at) {
-        this.updated_at = updated_at;
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
     }
 }
