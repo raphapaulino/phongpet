@@ -14,26 +14,30 @@ public class Animal {
     @EqualsAndHashCode.Include
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    protected Long id;
-    protected String uuid;
-    protected String name;
-    protected String photo;
+    private Long id;
+    private String uuid;
+
+    @ManyToOne
+    private Company company;
+
+    private String name;
+    private String photo;
     @Column(name = "born_date")
-    protected String bornDate;
-    protected String nameSlug;
-    protected String specie;
-    protected String color;
-    protected String gender;
-    protected String size;
-    protected String coat;
-    protected String breed; // dog/cat/horse/sheep/cattle
-    protected Integer age;
-    protected Integer ageMonths;
-    protected String ageGroup; //adult or puppy
-    // protected boolean isNeutered;
-    // protected boolean isActive;
-    protected Date deletedAt;
-    protected Date createdAt;
-    protected Date updatedAt;
+    private String bornDate;
+    private String nameSlug;
+    private String specie;
+    private String color;
+    private String gender;
+    private String size;
+    private String coat;
+    private String breed; // dog/cat/horse/sheep/cattle
+    private Integer age;
+    private Integer ageMonths;
+    private String ageGroup; //adult or puppy
+    // private boolean isNeutered;
+    // private boolean isActive;
+    private Date deletedAt;
+    private Date createdAt;
+    private Date updatedAt;
 
 }

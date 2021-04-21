@@ -1,7 +1,6 @@
 package br.com.raphaelpaulino.phongpetapi.domain.repository;
 
 import br.com.raphaelpaulino.phongpetapi.models.Animal;
-import org.springframework.stereotype.Component;
 
 import java.util.List;
 
