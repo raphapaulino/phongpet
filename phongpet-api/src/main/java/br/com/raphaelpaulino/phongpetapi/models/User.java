@@ -8,65 +8,34 @@ import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
-import java.util.Date;
 
-@Data
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
+@Data
 @Entity
-public class Animal {
+public class User {
 
     @EqualsAndHashCode.Include
-    @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
     private Long id;
 
     @Column
     private String uuid;
 
-    @Column
+    @Column(nullable = false)
     private String name;
 
-    @Column
-    private String photo;
+    @Column(nullable = false)
+    private String email;
 
-    @Column(name = "born_date")
-    private String bornDate;
-
-    @Column
-    private String nameSlug;
+    @Column(columnDefinition = "datetime")
+    private String emailVerifiedAt;
 
     @Column
-    private String specie;
+    private String password;
 
     @Column
-    private String color;
-
-    @Column
-    private String gender;
-
-    @Column
-    private String size; // mini/standard/large/xl
-
-    @Column
-    private String coat;
-
-    @Column
-    private String breed; // dog/cat/horse/sheep/cattle
-
-    @Column
-    private Integer age;
-
-    @Column
-    private Integer ageMonths;
-
-    @Column
-    private String ageGroup; //adult or puppy
-
-    @Column
-    private Boolean isNeutered;
-
-    @Column
-    private Boolean isActive;
+    private String rememberToken;
 
     @Column
     private LocalDateTime deletedAt;
@@ -80,12 +49,4 @@ public class Animal {
     @UpdateTimestamp
     @Column(nullable = false, columnDefinition = "datetime")
     private LocalDateTime updatedAt;
-
-    // Relationships
-    @ManyToOne
-    private Company company;
-
-    @ManyToOne
-    private User user;
-
 }
